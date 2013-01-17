@@ -420,6 +420,84 @@ div.example {
     </section>
 </div>
 
+
+ <div class="slide intro">
+     <header><h1>Selectors API</h1></header>
+
+<p class="pop">Supported since IE8</span></p>
+ </div>
+
+ <div class="slide normal">
+<header><h1>Selectors API</h1></header>
+<section class="content">
+<pre contenteditable>var chil = $('#bar .foo');</pre>
+<p>Natively</p>
+<pre contenteditable>var el   = document.<strong>querySelector</strong>('#bar');
+
+var chil = el.<strong>querySelectorAll</strong>('.foo');</pre>
+<p>or</p>
+<pre contenteditable>chil = d.<strong>querySelectorAll</strong>('#bar .foo');</pre>
+</section>
+</div>
+
+<div class="slide normal">
+<header><h1>Selectors API</h1></header>
+<section class="content">
+<p>Access DOM elements with standard CSS selectors.</p>
+<pre contenteditable>elem.querySelector(selector);
+elem.querySelectorAll(selector);</pre>
+<p>Examples</p>
+<pre contenteditable>d.querySelector('#id, li, #slides');
+d.querySelectorAll('li:nth-of-type(odd)');</pre>
+<p class="half">Spec:
+<a href="http://www.w3.org/TR/selectors-api/">Selectors API level 1</a> |
+<a href="http://www.w3.org/TR/selectors-api2/">Selectors API Level 2</a></p>
+</section>
+</div>
+
+<div class="slide normal">
+<header><h1>static nodeList</h1></header>
+<section class="content">
+<pre contenteditable>QSA = d.querySelectorAll('#slides .slide')</pre>
+<p>if you increase # of slides, EBCN increases, QSA does not.</p>
+<pre contenteditable style="font-size:0.75rem">
+var EBCN = d.getElementsByClassName('slide');
+var QSA  = d.querySelectorAll('.slide');<button onClick="slideExamples.setUpQSA()">run</button></pre>
+<pre contenteditable style="font-size:0.75rem">
+var newSlide = d.createElement('div');
+newSlide.classList.add('slide');
+d.getElementById('slides').appendChild(newSlide);
+
+console.log('Current EBCN: ' + EBCN.length);
+console.log('Current QSA: ' + QSA.length);<button onClick="slideExamples.testQSA()">Test Me</button>
+</pre>
+</section>
+</div>
+
+
+ <div class="slide normal">
+<header><h1>No Native Iteration</h1></header>
+<section class="content">
+<p>jQuery</p>
+<pre contenteditable>
+$('#slides .slide').addClass('current');</pre>
+<p>Vanilla.js</p>
+<pre contenteditable>
+var slides =
+   d.querySelectorAll('#slides .slide');
+
+for(var i=0; i &lt; slides.length; i++){
+   slides[i].classList.add('current');
+}</pre>
+
+</section>
+</div>
+
+
+
+
+
+
 <div class="slide">
   <header><h1>querySelectorAll()</h1>
   	<h1>querySelector()</h1></header>
@@ -435,15 +513,75 @@ alert("There are " + slides.length + " slides covering " + topics.length + ' top
 
 				<script defer>
 				document.querySelector("#qsa").addEventListener('click',
-				function(){
-					var slides = document.querySelectorAll('div.slide');
-				  var topics = document.querySelectorAll('h1.count');
-				  alert("There are " + slides.length + " slides covering " + topics.length + ' topics.')
-				});
+					function(){
+						var slides = document.querySelectorAll('div.slide');
+					  var topics = document.querySelectorAll('h1.count');
+					  alert("There are " + slides.length + " slides covering " + topics.length + ' topics.')
+					});
 				</script>
-
     </section>
 </div>
+
+
+<div class="slide intro">
+     <header><h1 style="font-size: 2.75rem;">getElementsByClassName</h1></header>
+     <section><p class="pop">Supported since IE9</p></section>
+</div>
+
+
+<div class="slide normal">
+     <header><h1>getElementsByClassName</h1></header>
+     <section class="content">
+
+<p>on the document</p>
+     <pre contenteditable>d.getElementsByClassName('foo');
+     </pre>
+
+<p>on a DOM node</p>
+<pre contenteditable>el = document.getElementById('bar');
+el.getElementsByClassName('foo');
+</pre>
+<p>jQuery Equivalent</p>
+<pre contenteditable>el = $('.bar');</pre>
+ </section>
+ </div>
+
+
+<div class="slide normal">
+     <header><h1>Returns a Live Node List</h1></header>
+     <section class="content" style="margin-top: -20px;">
+<p class="half">Try the following code in the console</p>
+<pre style="font-size:0.8rem" contenteditable>
+var container = document.getElementById('slides');
+var slides = container.getElementsByClassName('slide');
+console.log('1.' + slides.length);<button onClick="slideExamples.doElementByCN1();">Originally</button>
+
+var foo = document.createElement('div');
+foo.classList.add('slide');
+container.appendChild(foo);
+console.log('2.' + slides.length);<button onClick="slideExamples.doElementByCN2(); ">Adding One</button></pre>
+<ul><li>Live NodeList</li><li>Case-sensitive</li><li>Empty NodeList returns true</li></ul>
+<pre style="font-size:0.8rem" contenteditable>var emptyList = document.getElementsByClassName('not_found');
+if(emptyList) {alert('returned empty node list')};<button onClick="slideExamples.emptyList()">Test Me</button></pre>     </section>
+ </div>
+
+<div class="slide normal"><section class="content">
+     <h1 style="font-size: 1.8rem">getElementsByClassName(names)</h1>
+
+     <blockquote><p>The <strong>getElementsByClassName(classNames)</strong> method takes a string that contains an unordered set of unique <strong>space-separated</strong> tokens representing classes. When called, the method must return a <strong><i class="textmask">live</i> NodeList</strong> object containing all the elements in the document, in <strong>tree order</strong>, that have all the classes specified in that argument, having obtained the classes by <strong>splitting a string on spaces</strong>. If there are no tokens specified in the argument, then the method must return an <strong>empty NodeList</strong>. If the document is in quirks mode, then the comparisons for the classes must be done in an ASCII case-insensitive manner, otherwise, the comparisons must be done in a <strong>case-sensitive</strong> manner.</p><cite> <a href="http://dev.w3.org/html5/spec-LC/dom.html#dom-document-getelementsbyclassname" target="_blank">-- Specification</a>.</cite>
+</blockquote></section>
+ </div>
+
+
+<div class="slide">
+  <header><h1></h1></header>
+    <section class="content">
+    </section>
+</div>
+
+
+
+
 
 
    </div>
