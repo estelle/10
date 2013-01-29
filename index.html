@@ -4,383 +4,14 @@
     <!--[if gte IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
     <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" /><![endif]-->
 <meta charset="utf-8" />
-    <title>Slide Deck</title>
+    <title>10 things you didn't know your browser could do</title>
 <!--
 Made by: Estelle Weyl
 Twitter: @estellevw, @standardista, @webdevtips
 Copyright:  CC-SA-NC-BY - Creative Commons Attribution-NonCommercial-ShareAlike
 -->
+<link rel="stylesheet" href="10.css">
 <style>
-:root {font-size: 162.5%;}
-body {
-	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-	padding: 0;
-	margin: 0;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0px; top: 0px;
-}
-
-#info {
-	font-size: small;
-	position: absolute;
-	bottom: 0px;
-	left: 40%;
-	z-index: 500;
-	color: #fff;
-}
-/* optional */
-#topinfo {
-	font-size: small;
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	z-index: 500;
-}
-.key {
-	color: black;
-	display: inline-block;
-	padding: 3px 3px 3px 3px;
-	text-shadow: none;
-	letter-spacing: 0;
-	position: relative;
-	background: white;
-	border-radius: 5px;
-	font-weight: bold;
-	text-shadow: 0 0 1px currentColor;
-	}
-#presentation {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	left: 0px;
-	top: 0px;
-	display: block;
-	overflow: hidden;
-	background-image: -webkit-radial-gradient(50% 50%, circle, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0) 20%);
-	background-image: -moz-radial-gradient(50% 50%, circle, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0) 20%);
-	background-image: radial-gradient(50% 50%, circle, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0) 20%);
-	background-size: 20px 10px;
-	background-color: #333354;
-}
-.slides {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	position: absolute;
-	display: block;
-	-webkit-transition: -webkit-transform 1s ease-in-out;
-	-moz-transition: -moz-transform 1s ease-in-out;
-	-ms-transition: -ms-transform 1s ease-in-out;
-	-o-transition: -o-transform 1s ease-in-out;
-	transition: transform 1s ease-in-out;
-	-webkit-transform: scale(0.8);
-	-moz-transform: scale(0.8);
-	-ms-transform: scale(0.8);
-	-o-transform: scale(0.8);
-	transform: scale(0.8);
-}
-.slide {
-	display: none;
-	position: absolute;
-	overflow: hidden;
-	width: 900px;
-	height: 700px;
-	left: 50%;
-	top: 50%;
-	margin-top: -350px;
-	background-color: #eee;
-	-webkit-transition: all 0.25s ease-in-out;
-	-moz-transition: all 0.25s ease-in-out;
-	-ms-transition: all 0.25s ease-in-out;
-	-o-transition: all 0.25s ease-in-out;
-	transition: all 0.25s ease-in-out;
-	-webkit-transform: scale(1);
-	-moz-transform: scale(1);
-	-ms-transform: scale(1);
-	-o-transform: scale(1);
-	transform: scale(1);
-	padding-left: 20px;
-	padding-top: 10px;
-	border-radius: 15px;
-	border: 5px solid #fff;
-
-	box-shadow: 0 0 20px rgba(0,0,0,0.6), inset 0 0 6px rgba(0,0,0,0.4);
-}
-.slide.intro {
-	text-align: center;
-	font-size: 2rem;
-}
-.slide.intro hgroup {
-	margin-top: 200px;
-}
-
-.content input, button {
-	font-size: 2rem;
-}
-.content .button {
-
-}
-.slide textarea.mynotes {
-		-webkit-appearance: none;
-		border: 1px #aaa solid;
-		border-radius: 5px;
-		width: 100%;
-		font-size: 1.2rem;
-		font-style: italic;
-		box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
-		padding: 5px;
-		box-sizing: border-box;
-		font-family:"Palatino Linotype", "Book Antiqua", Palatino, cursive,serif;
-	 }
-.content td {
- 	border: 1px solid black;
-}
-.invalid {
-	background-color: red;
-}
-.slide.section,.slide.intro {
-	text-align: center;
-}
-.slide.section,.slide.intro header {
-	font-size: 2.5rem;
-}
-.slide li {
-    margin-bottom: 10px;
-}
-.slide img {
-	max-height: 90%;
-	border: 1px solid white;
-	-moz-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
-	box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
-	text-align: center;
-}
-.slide p{
-	font-size: 1.4rem;
-}
-.slide .counter {
-	color: #999999;
-	position: absolute;
-	left: 20px;
-	bottom: 20px;
-	display: block;
-	font-size: 0.7rem;
-}
-.slide.title > .counter,
-.slide.segue > .counter,
-.slide.mainTitle > .counter {
-	display: none;
-}
-.force-render {
-	display: block;
-	visibility: hidden;
-}
-.slide.far-past {
-	display: block;
-	margin-left: -2400px;
-}
-.slide.past {
-	visibility: visible;
-	display: block;
-	margin-left: -1400px;
-}
-.slide.current {
-	visibility: visible;
-	display: block;
-	margin-left: -450px;
-}
-.slide.future {
-	visibility: visible;
-	display: block;
-	margin-left: 500px;
-}
-.slide.far-future {
-	display: block;
-	margin-left: 1500px;
-}
-
-/* Content */
-
-header {
-	font-weight: normal;
-	letter-spacing: -.05em;
-	text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
-	left: 30px;
-	top: 25px;
-	font-size: 2rem;
-	text-align: center;
-}
-h1 {
-	font-size:1.8rem;
-	margin-bottom: 0px;
-}
-h2 {
-	font-size: 1.9rem;
-}
-h1:first-child {
-	margin-top: 0;
-}
-section, footer {
-	text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
-	margin: 20px 30px 0;
-	display: block;
-	overflow: hidden;
-}
-footer {
-	font-size: 1rem;
-	margin: 20px 0 0 30px;
-}
-a {
-	color: #444465;
-	display: inline-block;
-	text-decoration: none;
-	line-height: 110%;
-}
-a:hover {
-	text-decoration: underline;
-}
-pre {
-	text-align: left;
-	font-size: 1.2rem;
-	padding: 10px 20px;
-	background: rgba(255,255,255, 0.5);
-	-moz-border-radius: 8px;
-	border-radius: 8px;
-	border: 1px solid white;
-}
-pre b {
-	font-weight: normal;
-	color: #c61800;
-	text-shadow: #c61800 0 0 1px;
-/*letter-spacing: -1px;*/}
-pre em {
-	font-weight: normal;
-	font-style: normal;
-	color: #18a600;
-	text-shadow: #18a600 0 0 1px;
-}
-div.example {
-	display: block;
-	padding: 10px 20px;
-	background: rgba(255, 255, 255, 0.4);
-	border-radius: 8px;
-	margin-bottom: 10px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-}
-#presentation-counter {
-	color: #ccc;
-	font-size: 0.7rem;
-	letter-spacing: 1px;
-	position: absolute;
-	top: 40%;
-	left: 0;
-	width: 100%;
-	text-align: center;
-}
-#next,
-#back {
-	z-index: 1000;
-	position: absolute;
-	top: 5px;
-	left: 5px;
-}
-#next,
-#back,
-a.button{
-	list-style-type: none;
-	-webkit-appearance: none;
-	color: #333;
-	font-size: 1rem;
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-	background: -webkit-linear-gradient(#fff 50%, #eee 50%, #ddd);
-	background: -moz-linear-gradient(#fff 50%, #eee 50%, #ddd);
-	background: -ms-linear-gradient(#fff 50%, #eee 50%, #ddd);
-	background: -o-linear-gradient(#fff 50%, #eee 50%, #ddd);
-	background: linear-gradient(#fff 50%, #eee 50%, #ddd);
-	border-radius: 7px;
-	border: none;
-	padding: 5px 10px;
-	letter-spacing:1px;
-	font-size: 1rem;
-	box-shadow: inset 0 0 2px rgba(0,0,0,0.3),
-	  2px 2px 5px rgba(0,0,0,0.7);
-	border: 3px solid #eee;
-}
-a.button {float: right; margin-right: 5px;}
-#next {left: auto; right: 5px;}
-
-/* OBJECT PAGES */
-.object header {
-	position:absolute;
-	top: 10px;
-	width: 100%;
-	text-align:center;
-	background-color: rgba(255,255,255,0.9);
-	left:0;
-}
-.objectlink {
-	position:absolute;
-	top:0; right:0;
-	color: white;
-	background-color: #000;
-	padding: 3px 5px;
-	border: none;
-}
-.slide.object {padding:0;}
-.object object {width: 100%; height: 100%;}
-.notes {display: none;}
-	.temphidden {
-		opacity: 0;
-		top: 200px;
-	}
-	p {
-		position: relative;
-		top: 0px;
-		opacity: 1px;
-		-webkit-transition: 2s;
-		transition: 2s;
-}
-
-body {
-	counter-reset: features 0;
-
-}
-	h1.count {counter-increment: feature;
-	}
-	h1.count:before {
-		content: counter(feature) ". ";
-		color: #444465;
-
-	}
-
-
-@media print {
-	.slide {
-		page-break-inside: avoid;
-		page-break-after: always;
-		visibility: visible !important;
-		font-size: 20pt;
-		font-family: Arial, sans-serif;
-	}
-	@page {
-		size: landscape;
-	}
-	body {
-		font-size: 12pt;
-		background: white;
-	}
-	header h1 {
-		border-top: 2pt solid gray;
-		border-bottom: 1px dotted silver;
-	}
-	#presentation-counter, #info, #topinfo, .counter {
-		display: none
-	}
-
 
 </style>
 </head>
@@ -408,8 +39,8 @@ body {
     </div>
 
 
-<div class="slide intro">
-     <header><hgroup><h1 class="count">$('selector') without jQuery</h1></hgroup></header>
+<div class="slide intro count">
+     <header><hgroup><h1 class="">$('selector') without jQuery</h1></hgroup></header>
     <section class="content">
      <p class="temphidden">Selectors API</p>
      <p class="pop temphidden">Supported since IE8</p>
@@ -471,24 +102,26 @@ for(var i=0; i &lt; slides.length; i++){
 
 
 <div class="slide">
-  <header><h1>querySelectorAll()</h1>
-  	<h1>querySelector()</h1></header>
+  <header>
+  	<h1>Proof!</h1></header>
     <section class="content">
 
-				<pre contenteditable>var els = document.<strong>querySelectorAll</strong>('selectors here')</pre>
-				<pre contenteditable>var el = document.<strong>querySelector</strong>('selectors here')</pre>
-				<pre contenteditable>var slides = document.querySelectorAll('div.slide');
-var topics = document.querySelectorAll('h1.count');
-alert("There are " + slides.length + " slides covering " + topics.length + ' topics.')
-				</pre>
-				<a class=button id="qsa">Click me</a>
+				<pre contenteditable>
+var slides = document.querySelectorAll('div.slide'),
+    topics = document.querySelectorAll('h1.count'),
+    summary = document.querySelector("#summary");
 
+summary.innerHTML = "There are " + slides.length +
+    " slides covering " + topics.length +  " topics.";</pre>
+				<a class=button id="qsa">Click me</a>
+<p id="summary" style="background-color: #fff; margin-top: 3rem;"></p>
 				<script defer>
 				document.querySelector("#qsa").addEventListener('click',
 					function(){
 						var slides = document.querySelectorAll('div.slide');
 					  var topics = document.querySelectorAll('h1.count');
-					  alert("There are " + slides.length + " slides covering " + topics.length + ' topics.')
+					  var summary = document.querySelector("#summary");
+summary.innerHTML = "There are " + slides.length + " slides covering " + topics.length +  " topics.";
 					});
 				</script>
     </section>
@@ -528,7 +161,8 @@ console.log('Current QSA: ' + QSA.length);</pre>
 el.getElementsByClassName('foo');
 </pre>
 <p>jQuery Equivalent</p>
-<pre contenteditable>el = $('.bar');</pre>
+<pre contenteditable>el = $('.foo');
+el = $(#bar '.foo');</pre>
  </section>
  </div>
 
@@ -551,12 +185,12 @@ console.log('2.' + slides.length);</pre><a class="button" onClick="slideExamples
 if(emptyList) {alert('returned empty node list')};</pre><a class="button" onClick="slideExamples.emptyList()">Test Me</a>     </section>
  </div>
 
-<div class="slide normal"><section class="content">
+<!--<div class="slide normal"><section class="content">
      <h1>getElementsByClassName(names)</h1>
 
      <blockquote style="margin: 0; font-size: 1rem;"><p  style="margin: 40px 0; font-size: 1rem;">The <strong>getElementsByClassName(classNames)</strong> method takes a string that contains an unordered set of unique <strong>space-separated</strong> tokens representing classes. When called, the method must return a <strong><i class="textmask">live</i> NodeList</strong> object containing all the elements in the document, in <strong>tree order</strong>, that have all the classes specified in that argument, having obtained the classes by <strong>splitting a string on spaces</strong>. If there are no tokens specified in the argument, then the method must return an <strong>empty NodeList</strong>. If the document is in quirks mode, then the comparisons for the classes must be done in an ASCII case-insensitive manner, otherwise, the comparisons must be done in a <strong>case-sensitive</strong> manner.</p><cite> <a href="http://dev.w3.org/html5/spec-LC/dom.html#dom-document-getelementsbyclassname" target="_blank">-- Specification</a>.</cite>
 </blockquote></section>
- </div>
+ </div>-->
 
 
 
@@ -579,31 +213,245 @@ console.log('Current QSA: ' + QSA.length);
 </section>
 </div>
 
-<div class="slide intro">
-     <header><hgroup><h1 class="count">Browser Storage</h1><h1 class="count">Browser Storage</h1></hgroup></header>
+<div class="slide intro count">
+     <header><hgroup><h1 class="count" contenteditable> Everything can be editable</h1></hgroup></header>
+</div>
+
+<div class="slide">
+  <header><h1>contentEditable</h1></header>
+    <section class="content">
+      <pre id='ce' contenteditable>&lt;body contenteditable&gt;</pre>
+      <ul>
+        <li  class="temphidden">Everything can be updated</li>
+        <li  class="temphidden">Can even paste!</li>
+        <li  class="temphidden">Updates the DOM</li>
+        <li  class="temphidden">Turn anything into a form element</li>
+        <li  class="temphidden">Supported since IE5</li>
+      </ul>
+      <p id="ce2" style="margin-top: 3rem; background: white;"></p>
+      <a class="button" onclick="document.getElementById('ce2').innerHTML = document.getElementById('ce').innerHTML; return false">test me</a>
+    </section>
+</div>
+
+
+<div class="slide intro count">
+     <header><hgroup><h1 class="count">Can store lots of data</h1></hgroup></header>
     <section class="content">
      <p class="temphidden">LocalStorage</p>
      <p class="temphidden">SessionStorage</p>
      <p class="temphidden">WebSQL</p>
      <p class="temphidden">IndexedDB</p>
+     <p class="temphidden">Your whole site with AppCache</p>
     </section>
-</div><div class="slide intro">
-     <header><hgroup><h1 class="count">Browser Storage</h1><h1 class="count">Browser Storage</h1></hgroup></header>
+</div>
+
+<div class="slide normal">
+<header><h1>Cookie Limitations</h1></header>
+<section class="content">
+<p>Cookies</p>
+<ul>
+	<li>Sent with every HTTP request (in plain text)</li>
+    <li>Limited to 4KB each, 20 per domain. 300 per browser.</li>
+    <li>No real API</li>
+</ul>
+<p>Local and Session Storage</p>
+<ul>
+	<li>Not sent to server (more secure / less bandwidth)</li>
+    <li>Limited to 5MB each</li>
+    <li>Long term or session long</li>
+    <li>Simmple API</li>
+</ul>
+
+</section>
+</div>
+
+ <div class="slide" id="web-storage">
+
+          <header> <h1>localStorage</h1></header>
+          <section>
+<pre contenteditable>
+save.addEventListener('click', function () {
+  window.<b>localStorage</b>.<b>setItem</b>('key', textarea.value);
+}, false);
+textarea.value = window.<b>localStorage</b>.<b>getItem</b>('key');
+</pre>
+            <p id="localstorage-message">Save text value on the client side (crash-safe)</p>
+            <textarea id="ls" placeholder="Type your text here..."></textarea>
+            <input type="button" value="save" id="savelocalstorage" class="button"/>
+            <input type=button id="savelocalstorage" class="button" onClick="window.open('localstorageiframe.html', 'ls', 'width=200,height=200')" value="Open Test"/>
+            <p id="lsLog"></p>
+
+ <pre contenteditable>// place content from local storage onLoad
+var el = document.querySelector('#myID');
+el.innerHTML = window.localStorage.getItem('key');</pre>
+
+</section>
+        </div>
+
+
+
+<div class="slide">
+<header><h1>Slidedeck showNotes</h1></header>
     <section class="content">
-     <p class="temphidden">LocalStorage</p>
-     <p class="temphidden">SessionStorage</p>
-     <p class="temphidden">WebSQL</p>
-     <p class="temphidden">IndexedDB</p>
+    <pre contenteditable style="height:500px; overflow:scroll">// show/hide or create/activate notes on #4
+addNotes: function(){
+ var d = document;
+
+ //if the textarea already exists, show it.
+ if(d.querySelector('.current textarea.mynotes')) {
+   d.querySelector('.current textarea.mynotes').classList.toggle('temphidden');
+   return;
+ }
+
+ // if the text area doesn't exist, create it
+ var ta = d.createElement('textarea'),
+     currentSlide = d.querySelector('.current section'),
+	   path = window.location.pathname,
+     A = path.lastIndexOf('/') + 1,
+     B = path.lastIndexOf('.'),
+     firstPartOfKey,
+     key;
+
+ // create a unique key based on this page, deck &amp; server
+ if(B && B > A){
+   firstPartOfKey = path.substring(A, B);
+ } else {
+   firstPartOfKey = path.substring(1, path.length-1) || 'home';
+ }
+ key = firstPartOfKey +  window.location.hash;
+
+// if something was stored, show it
+ta.value = window.localStorage.getItem(key) || '';
+ta.className = 'mynotes';
+
+ // save to localStorage on every keyup
+ ta.addEventListener('keyup', function(){
+    window.localStorage.setItem(key,ta.value);
+ });
+
+ //
+ currentSlide.appendChild(ta);
+},
+</pre>
     </section>
-</div><div class="slide intro">
-     <header><hgroup><h1 class="count">Browser Storage</h1><h1 class="count">Browser Storage</h1></hgroup></header>
+</div>
+
+
+<div class="slide object">
+<object data="http://cubeedoo.github.com/Cubeedoo/"></object>
+     <header><h1>Pause Game / User Name / High Scores</h1></header>
+     <a href="http://cubeedoo.github.com/Cubeedoo/" class="objectlink">Play the Game</a>
+ </div>
+
+     <div class="slide">
+      <header>
+         <h1>Data Storage
+         </h1>
+      </header>
+      <section class="content">
+<ul class="firstline">
+<li>localStorage ➫ persistent storage <br/>Supported everywhere since ie8+<br/>&nbsp;</li>
+<li>sessionStorage ➫ per tab storage  <br/>Supported everywhere since ie8+<br/>&nbsp;</li>
+<li>WebSQL ➫ Mobile Web Apps <br>deprecated. Will never be in FF/IE<br/>&nbsp;</li>
+<li>IndexedDB ➫ 2014? <br/>
+Found in IE10, FF, Chrome, BB. Not Safari or other mobile yet</li>
+</ul>
+<p class="notes">Chrome: view storage: Inspector > Local Storage </p>
+
+      </section>
+  </div>
+
+
+
+<div class="slide intro count">
+     <header><hgroup><h1 class="count">SVG as Background Images</h1></hgroup></header>
     <section class="content">
-     <p class="temphidden">LocalStorage</p>
-     <p class="temphidden">SessionStorage</p>
-     <p class="temphidden">WebSQL</p>
-     <p class="temphidden">IndexedDB</p>
+     <p class="temphidden">Latecomers: IE9 &amp; Android 3</p>
     </section>
-</div><div class="slide intro">
+</div>
+
+
+<div class="slide svgbg">
+  <header><h1>Animate your backgrounds on the fly!</h1></header>
+    <section class="content">
+<ul>
+	<li>Scalable Vector Graphics</li>
+	<li>2D image format </li>
+	<li>supports interactivity and animation</li>
+</ul>
+    </section>
+</div>
+
+
+
+<div class="slide intro count">
+     <header><hgroup><h1 class="count">Can count with CSS</h1></hgroup></header>
+    <section class="content">
+     <p class="temphidden">Supported since IE8</p>
+    </section>
+</div>
+
+
+<div class="slide">
+  <header><h1>Counters with Generated Content</h1></header>
+    <section class="content"><pre contenteditable>#presentation {
+  counter-reset: ten_features 0;
+}
+.count h1 {
+  counter-increment: ten_features;
+}
+.count h1:before {
+  content: counter(ten_features) ". ";
+  background:
+    url(star.svg) no-repeat -40px 2px / 250px 250px;
+  padding: 15px;
+}</pre>
+    </section>
+</div>
+
+
+<div class="slide intro count">
+     <header><hgroup><h1 class="count">CSS can Calculate</h1></hgroup></header>
+    <section class="content">
+     <p class="temphidden">New!</p>
+    </section>
+</div>
+
+<div class="slide intro count">
+     <header><hgroup><h1 class="count">IE6 and IE7 can buy you a house</h1></hgroup></header>
+    <section class="content" style="background: url(cartoon_house.jpg) no-repeat center; background-size: auto 100%; min-height: 400px;">
+      <p class="temphidden" style="color: white; text-shadow: 2px 2px 5px rgba(0,0,0,0.7),  -2px -2px 5px rgba(0,0,0,0.7);">Charge more for old IE browser support</p>
+    </section>
+</div>
+
+
+<div class="slide intro count">
+     <header><hgroup><h1 class="count">Manage memory</h1></hgroup></header>
+    <section class="content">
+     <p class="temphidden">In the debugger</p>
+    </section>
+</div>
+
+<div class="slide">
+  <header><h1>Observer memory usage</h1></header>
+    <section class="content">
+      <p>In Chrome Developer Tools</p>
+      <p>Timeline tab  ➫  memory</p>
+    </section>
+</div>
+
+
+
+
+
+<div class="slide intro count">
+     <header><hgroup><h1 class="count"></h1></hgroup></header>
+    <section class="content">
+
+    </section>
+</div>
+
+<div class="slide intro count">
      <header><hgroup><h1 class="count">Browser Storage</h1><h1 class="count">Browser Storage</h1></hgroup></header>
     <section class="content">
      <p class="temphidden">LocalStorage</p>
@@ -635,465 +483,9 @@ console.log('Current QSA: ' + QSA.length);
     </nav>
 </header>
 </div>
-<script>
-(function() {
-	var doc = document,
-	    disableBuilds = true,
-		ctr = 0,
-		spaces = /\s+/,
-		a1 = [''],
-	    toArray = function(list) {
-  		return Array.prototype.slice.call(list || [], 0);
-	},
-		byId = function(id) {
-		if (typeof id == 'string') { return doc.getElementById(id); }
-		return id;
-	},
+<script src="10.js">
 
-	query = function(query, root) {
-	  if (!query) { return []; }
-		if (typeof query != 'string') { return toArray(query); }
-		if (typeof root == 'string') {
-		  root = byId(root);
-		  if(!root){ return []; }
-    	}
-        root = root || document;
-  		var rootIsDoc = (root.nodeType == 9);
-  		var doc = rootIsDoc ? root : (root.ownerDocument || document);
-
-		// rewrite the query to be ID rooted
-		if (!rootIsDoc || ('>~+'.indexOf(query.charAt(0)) >= 0)) {
-			root.id = root.id || ('qUnique' + (ctr++));
-			query = '#' + root.id + ' ' + query;
-		}
-
-		// don't choke on something like ".yada.yada >"
-		if ('>~+'.indexOf(query.slice(-1)) >= 0) { query += ' *'; }
-		return toArray(doc.querySelectorAll(query));
-	},
-
-	strToArray = function(s) {
-		if (typeof s == 'string' || s instanceof String) {
-			if (s.indexOf(' ') < 0) {
-				a1[0] = s;
-				return a1;
-			}
-			else {
-					return s.split(spaces);
-			}
-		}
-		return s;
-	  },
-
-    addClass = function(node, classStr) {
-	  classStr = strToArray(classStr);
-	  var cls = ' ' + node.className + ' ';
-	  for (var i = 0, len = classStr.length, c; i < len; ++i) {
-		c = classStr[i];
-		if (c && cls.indexOf(' ' + c + ' ') < 0) {
-		  cls += c + ' ';
-		}
-	  }
-	  node.className = cls.trim();
-	},
-
-	removeClass = function(node, classStr) {
-		  var cls;
-		  if (classStr !== undefined) {
-			classStr = strToArray(classStr);
-			cls = ' ' + node.className + ' ';
-			for (var i = 0, len = classStr.length; i < len; ++i) {
-			  cls = cls.replace(' ' + classStr[i] + ' ', ' ');
-			}
-			  cls = cls.trim();
-		  } else {
-			cls = '';
-		  }
-
-		  if (node.className != cls) {
-			node.className = cls;
-		  }
-
-	  },
-
-	  toggleClass = function(node, classStr) {
-		  var cls = ' ' + node.className + ' ';
-		  if (cls.indexOf(' ' + classStr.trim() + ' ') >= 0) {
-			removeClass(node, classStr);
-		  } else {
-			addClass(node, classStr);
-		  }
-	  },
-
-
-
-  		ua = navigator.userAgent,
-		isFF = parseFloat(ua.split('Firefox/')[1]) || undefined,
-		isWK = parseFloat(ua.split('WebKit/')[1]) || undefined,
-		isOpera = parseFloat(ua.split('Opera/')[1]) || undefined,
-
-
-
-  	 	canTransition = (function() {
-		  var ver = parseFloat(ua.split('Version/')[1]) || undefined;
-		  // test to determine if this browser can handle CSS transitions.
-		  var cachedCanTransition =
-
-			(isWK || (isFF && isFF > 3.6 ) || (isOpera && ver >= 10.5));
-		  return function() { return cachedCanTransition; }
-
-  		}
-  )();
-
-
-//-----------------------------------------------------------------//
-
-var Slide = function(node, idx) {
-  this._node = node;
-  if (idx >= 0) {
-    this._count = idx + 1;
-  }
-  if (this._node) {
-    addClass(this._node, 'slide distant-slide');
-  }
-  this._makeCounter();
-  this._makeBuildList();
-};
-
-
-
-Slide.prototype = {
-    _node: null,
-    _count: 0,
-    _buildList: [],
-    _visited: false,
-    _currentState: '',
-    _states: [ 'distant-slide', 'far-past',
-               'past', 'current', 'future',
-               'far-future', 'distant-slide' ],
-    setState: function(state) {
-    if (typeof state != 'string') {
-      state = this._states[state];
-    }
-
-    if (state == 'current' && !this._visited) {
-      this._visited = true;
-      this._makeBuildList();
-    }
-
-    removeClass(this._node, this._states);
-    addClass(this._node, state);
-    this._currentState = state;
-
-
-
-  var _t = this;
-    setTimeout(function(){ _t._runAutos(); } , 400);
-  },
-
-    _makeCounter: function() {
-    if(!this._count || !this._node) { return; }
-
-      var c = doc.createElement('span');
-    c.innerHTML = this._count;
-    c.className = 'counter';
-    this._node.appendChild(c);
-  },
-
-    _makeBuildList: function() {
-    this._buildList = [];
-    if (disableBuilds) { return; }
-
-      if (this._node) {
-      this._buildList = query('[data-build] > *', this._node);
-    }
-
-      this._buildList.forEach(function(el) {
-      addClass(el, 'to-build');
-    });
-  },
-
-    _runAutos: function() {
-    if (this._currentState != 'current') {
-      return;
-    }
-
-      // find the next auto, slice it out of the list, and run it
-
-      var idx = -1;
-    this._buildList.some(function(n, i) {
-      if (n.hasAttribute('data-auto')) {
-        idx = i;
-        return true;
-      }
-
-        return false;
-    });
-    if (idx >= 0) {
-      var elem = this._buildList.splice(idx, 1)[0];
-      var transitionEnd = isWK ? 'webkitTransitionEnd' : (isFF ? 'mozTransitionEnd' : 'oTransitionEnd');
-      var _t = this;
-      if (canTransition()) {
-        var l = function(evt) {
-          elem.parentNode.removeEventListener(transitionEnd, l, false);
-          _t._runAutos();
-        };
-        elem.parentNode.addEventListener(transitionEnd, l, false);
-        removeClass(elem, 'to-build');
-      } else {
-        setTimeout(function() {
-          removeClass(elem, 'to-build');
-          _t._runAutos();
-        }, 400);
-      }
-
-      }
-
-    },
-
-    buildNext: function() {
-    if (!this._buildList.length) {
-      return false;
-    }
-
-      removeClass(this._buildList.shift(), 'to-build');
-    return true;
-  },
-
-  };
-
-
-
-  //
-  // SlideShow class
-  //
-
-  var SlideShow = function(slides) {
-  this._slides = (slides || []).map(function(el, idx) {
-    return new Slide(el, idx);
-  });
-
-
-
-  var h = window.location.hash;
-  try {
-    this.current = parseInt(h.split('#slide')[1], 10);
-  } catch (e) { /* squeltch */ }
-
-  this.current = isNaN(this.current) ? 1 : this.current;
-  var _t = this;
-  doc.addEventListener('keydown', function(e) { _t.handleKeys(e); }, false);
-  doc.addEventListener('mousewheel', function(e) { _t.handleWheel(e); }, false);
-  doc.addEventListener('DOMMouseScroll', function(e) { _t.handleWheel(e); }, false);
-  doc.addEventListener('touchstart',  function(e) { _t.handleTouchStart(e); }, false);
-  doc.addEventListener('touchend', function(e) { _t.handleTouchEnd(e); }, false);
-  window.addEventListener('popstate', function(e) { _t.go(e.state); }, false);
-  doc.getElementById('back').addEventListener('click', function(e) {_t.prev();}, false);
-  doc.getElementById('next').addEventListener('click', function(e) {_t.next();}, false);
-  this._update();
-};
-
-
-
-SlideShow.prototype = {
-  _slides: [],
-
-    _update: function(dontPush) {
-		document.querySelector('#presentation-counter').innerText = this.current;
-		if (history.pushState) {
-		  if (!dontPush) {
-			history.pushState(this.current, 'Slide ' + this.current, '#slide' + this.current);
-		    }
-		} else {
-		  window.location.hash = 'flopslide' + this.current;
-		}
-	    for (var x = this.current-1; x < this.current + 7; x++) {
-		    if (this._slides[x-4]) {
-				this._slides[x-4].setState(Math.max(0, x-this.current));
-		    }
-		  }
-    },
-
-    current: 0,
-
-    next: function() {
-    if(document.querySelector('.current .temphidden')) {
-			this.showNextLine();
-			return true;
-		}
-		if (!this._slides[this.current-1].buildNext()) {
-		  this.current = Math.min(this.current + 1, this._slides.length);
-		  this._update();
-		}
-	 },
-	 showNextLine: function(){
-		var paragraphToShow = document.querySelector('.current .temphidden');
-		paragraphToShow.classList.remove('temphidden');
-	},
-	prev: function() {
-	this.current = Math.max(this.current-1, 1);
-	this._update();
-  },
-
-   go: function(num) {
-	  if (!num) return;
-	  if (history.pushState && this.current != num) {
-	    history.replaceState(this.current, 'Slide ' + this.current, '#slide' + this.current);
-	  }
-	  this.current = num;
-	  this._update(true);
-    },
-
-
-
-  _notesOn: false,
-
- showNotes: function() {
-    var isOn = this._notesOn = !this._notesOn;
-    query('.notes').forEach(function(el) {
-      el.style.display = (isOn) ? '' : 'none';
-    });
-  },
-
-
-    handleWheel: function(e) {
-    var delta = 0;
-    if (e.wheelDelta) {
-      delta = e.wheelDelta/120;
-      if (isOpera) {
-			delta = -delta;
-		  }
-      }
-	  else if (e.detail) {
-        delta = -e.detail/3;
-      }
-
-      if (delta > 0 ) {
-		  this.prev();
-		  return;
-		}
-      if (delta < 0 ) {
-		  this.next();
-		  return;
-		}
-    },
-
-	addNotes: function(){
-		if(document.querySelector('.current textarea.mynotes')) {
-			document.querySelector('.current textarea.mynotes').classList.toggle('temphidden');
-			return;
-		}
-		var ta = document.createElement('textarea'),
-		     currentSlide = document.querySelector('.current section'),
-			 path = window.location.pathname,
-			 A = path.lastIndexOf('/') + 1,
-			 B = path.lastIndexOf('.'),
-			 firstPartOfKey, key;
-		if(B && B > A){
-		    firstPartOfKey = path.substring(A, B);
-		} else {
-		    firstPartOfKey = path.substring(1, path.length-1) || 'home';
-		}
-		//console.log(firstPartOfKey);
-		key = firstPartOfKey +  window.location.hash;
-		ta.value = window.localStorage.getItem(key) || '';
-		ta.className = 'mynotes';
-
-		ta.addEventListener('keyup', function(){
-			//console.log(key + ' ' + ta.value)
-		    window.localStorage.setItem(key,ta.value);
-		});
-		currentSlide.appendChild(ta);
-	},
-
-
-	removeHidingClass: function(){
-		var paragraphToShow = document.querySelector('.current .temphidden');
-		if(paragraphToShow) {paragraphToShow.classList.remove('temphidden');}
-
-	},
-
-    handleKeys: function(e) {
-      // disable keys for these elements
-      if (/^(input|textarea|pre|object)$/i.test(e.target.nodeName)) return;
-
-
-      switch (e.keyCode) {
-		  case 37: // left arrow
-		  case 33: // left clicker
-			 this.prev(); break;
-		  case 39: // right arrow
-		  case 32: // space
-		  case 34: // clicker right
-			 this.next(); break;
-		  case 50: // 2
-		  case 190: // 2
-			 this.showNotes();
-			 this.removeHidingClass();
-			 break;
-	      case 52: // 4 (for taking notes with local storage (students)
-		     this.addNotes(); break;
-		     break;
-    	}
-    },
-
-    _touchStartX: 0,
-    handleTouchStart: function(e) {
-    this._touchStartX = e.touches[0].pageX;
-  },
-
-    handleTouchEnd: function(e) {
-    var delta = this._touchStartX - e.changedTouches[0].pageX;
-    var SWIPE_SIZE = 150;
-    if (delta > SWIPE_SIZE) {
-      this.next();
-    } else if (delta< -SWIPE_SIZE) {
-       this.prev();
-     }
-    },
-  };
-
-  // Initialize
-  var slideshow = new SlideShow(query('.slide'));
-})();
-
-var slideExamples = {
-	doElementByCN1: function(){
-		slideExamples.container = document.getElementById('slides');
-		slideExamples.slides = slideExamples.container.getElementsByClassName('slide');
-		alert('1. slides.length: ' + slideExamples.slides.length);
-	},
-	doElementByCN2: function(){
-		var foo = document.createElement('div');
-		foo.classList.add('slide');
-		slideExamples.container.appendChild(foo);
-		alert('2. slides.length: ' + slideExamples.slides.length);
-	},
-	emptyList: function(){
-		var emptyList = document.getElementsByClassName('not_found');
-		if(emptyList) {alert('returned empty node list')};
-	},
-	setUpQSA: function(){
-		slideExamples.EBCN = document.getElementsByClassName('slide');
-		slideExamples.QSA = document.querySelectorAll('#slides .slide');
-		alert('Original byClassName: ' + slideExamples.EBCN.length + '\n\nOriginal SelectorAll: ' + slideExamples.QSA.length);
-	},
-	testQSA: function(){
-		var newSlide = document.createElement('div');
-		newSlide.classList.add('slide');
-		document.getElementById('slides').appendChild(newSlide);
-
-alert('Current byClassName: ' + slideExamples.EBCN.length + '\n\nCurrent SelectorAll: ' + slideExamples.QSA.length);
-	},
-	bodyAttribute: function(){
-		document.body.dataset.aBC = 'frog';
-	    alert("getAttribute('data-a-b-c'): " + document.body.getAttribute('data-a-b-c') +
-			"\n\ndataset['aBC']: " + document.body.dataset['aBC'] +
-			"\n\ndataset.aBC: " + document.body.dataset.aBC);
-	}
- }</script>
-
-
+</script>
 
 
   </body>
