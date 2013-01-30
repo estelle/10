@@ -56,14 +56,14 @@ var webcam = (function(){
         var takeButton = document.createElement('button');
         takeButton.innerText = 'Smile!';
         takeButton.addEventListener('click', takePhoto, true);
-        document.body.appendChild(takeButton);
+        document.getElementById('camera').appendChild(takeButton);
 
         var saveButton = document.createElement('button');
         saveButton.id = 'save';
         saveButton.innerText = 'Save!';
         saveButton.disabled = true;
         saveButton.addEventListener('click', savePhoto, true);
-        document.body.appendChild(saveButton);
+        document.getElementById('camera').appendChild(saveButton);
 
     }
 
@@ -94,7 +94,7 @@ var webcam = (function(){
     return {
         init: function() {
 
-            changeStatus('Please accept the permissions dialog.', true);
+            changeStatus('Look up and click "ALLOW".', true);
 
             video.width = 640;
             video.height = 480;
