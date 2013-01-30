@@ -1,0 +1,33 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+head, style {display: block; background-color: #dedede;}
+[contenteditable] {-webkit-user-modify: read-write-plaintext-only;}
+style:first-of-type {visibility:hidden;}
+style:last-of-type {padding: 20px; font-size: 1.1em; white-space: pre; font-family: monospace; white-space:pre; border-radius: 10px; border: 3px solid #aaa; background-color:#dedede; margin: 20px auto; width: 80%; font-family:"Courier New", Courier, monospace; float: left; margin-right: -200px;}
+body {clear: both;}
+div {
+  height: 100px; margin: 0; line-height: 100px; font-size: 40px; text-align: center;}
+</style>
+
+<style contenteditable>
+div{outline: 5px dotted;}
+#A {width: 50%; outline-color: red;}
+#B {width: -webkit-calc(50% - 100px); float: left;}
+#C {width: 100px; float: left; outline-color: green}
+</style>
+<title>Try it out</title>
+</head>
+
+<body>
+    <div id="A">A
+    </div>
+    <div id="B">B
+    </div>
+    <div id="C">C
+    </div>
+</body>
+</html>
+

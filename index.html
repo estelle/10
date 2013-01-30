@@ -413,9 +413,54 @@ Found in IE10, FF, Chrome, BB. Not Safari or other mobile yet</li>
 <div class="slide intro count">
      <header><hgroup><h1 class="count">CSS can Calculate</h1></hgroup></header>
     <section class="content">
-     <p class="temphidden">New!</p>
+     <p class="temphidden">Prefixed in FF4, Saf6, BB10, Chr19, FF15 Android</p>
+     <p class="temphidden">Without prefix in FF16, IE 9+, Chrome 26</p>
+     <p class="temphidden">No Opera, Android or mobile Chrome love.... yet</p>
     </section>
 </div>
+
+<div class="slide">
+  <header><h1>CSS calc() function</h1></header>
+    <section class="content">    <p>calc()</p>
+    <pre contenteditable>width: <b>calc</b>(50% - 40px);
+background: linear-gradient(
+  black <b>calc</b>(50% - 2px),
+  white <b>calc</b>(50% - 2px),
+  white <b>calc</b>(50% + 2px),
+  black <b>calc</b>(50% + 2px));
+</pre>
+
+    </section>
+</div>
+
+<div class="slide object">
+  <header><h1>calc()</h1></header>
+    <object data="files/01_calc.html"></object>
+<a href="files/01_calc.html" target="play" class="objectlink">Try it out</a>
+</div>
+
+<div class="slide object">
+  <header><h1>calc()</h1></header>
+    <object data="files/02_calc.html"></object>
+<a href="files/02_calc.html" target="play" class="objectlink">Try it out</a>
+</div>
+
+<div class="slide">
+  <header><h1>CSS Future Functions</h1></header>
+    <section class="content" style="position: relative; top: -40px;">
+    <p>min()</p>
+    <pre contenteditable>width: <b>min</b>(100px, 100%);
+width: <b>min</b>(90px + 50px, 30%);</pre>
+<p>max()</p>
+    <pre contenteditable>width: <b>max</b>(100px, 100%);
+width: <b>max</b>(90px + 50px, 30%)</pre>
+<p>toggle()</p>
+    <pre contenteditable>em {
+  font-style: <b>toggle</b>(normal, italic);
+}</pre>
+    </section>
+</div>
+
 
 <div class="slide intro count">
      <header><hgroup><h1 class="count">IE6 and IE7 can buy you a house</h1></hgroup></header>
@@ -423,6 +468,38 @@ Found in IE10, FF, Chrome, BB. Not Safari or other mobile yet</li>
       <p class="temphidden" style="color: white; text-shadow: 2px 2px 5px rgba(0,0,0,0.7),  -2px -2px 5px rgba(0,0,0,0.7);">Charge more for old IE browser support</p>
     </section>
 </div>
+
+
+<div class="slide intro count">
+     <header><hgroup><h1 class="count">Take your picture</h1></hgroup></header>
+    <section class="content">
+      <p class="temphidden">Firefox, Chrome and Opera only</p>
+    </section>
+</div>
+
+<div class="slide">
+  <header><h1></h1></header>
+    <section class="content">
+      <div id="status"></div>
+<script src="camera.js">
+</script>
+    </section>
+</div>
+
+<div class="slide intro count">
+     <header><hgroup><h1 class="count">Animate Sprites</h1></hgroup></header>
+    <section class="content">
+
+    </section>
+</div>
+
+<div class="slide">
+  <header><h1>animation-timing-function</h1></header>
+    <section class="content">
+
+    </section>
+</div>
+
 
 
 <div class="slide intro count">
@@ -444,26 +521,12 @@ Found in IE10, FF, Chrome, BB. Not Safari or other mobile yet</li>
 
 
 
-<div class="slide intro count">
-     <header><hgroup><h1 class="count"></h1></hgroup></header>
-    <section class="content">
-
-    </section>
-</div>
-
-<div class="slide intro count">
-     <header><hgroup><h1 class="count">Browser Storage</h1><h1 class="count">Browser Storage</h1></hgroup></header>
-    <section class="content">
-     <p class="temphidden">LocalStorage</p>
-     <p class="temphidden">SessionStorage</p>
-     <p class="temphidden">WebSQL</p>
-     <p class="temphidden">IndexedDB</p>
-    </section>
-</div>
 
 <div class="slide">
-  <header><h1></h1></header>
-    <section class="content">
+  <header><h1>Thank you</h1></header>
+    <section class="content" style="text-align: center;">
+      <p>@estellevw</p>
+      <p>http://estelle.github.com</p>
     </section>
 </div>
 
