@@ -370,6 +370,8 @@ a.button {float: right; margin-right: 5px;}
 }
 .slide .half {opacity: 0.4; font-size: 80%;}
 
+#status div[style*="green"] {display: none;}
+#status div {width: 45%; height: 400px; float: left;}
 
 @media print {
   .slide {
