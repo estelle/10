@@ -96,8 +96,8 @@ var webcam = (function(){
 
             changeStatus('Look up and click "ALLOW".', true);
 
-            video.width = 640;
-            video.height = 480;
+            video.width = 320;
+            video.height = 240;
 
             document.getElementById('camera').appendChild(video);
             document.getElementById('camera').appendChild(photo);
