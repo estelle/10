@@ -371,8 +371,14 @@ a.button {float: right; margin-right: 5px;}
 .slide .half {opacity: 0.4; font-size: 80%;}
 
 #status div[style*="green"] {display: none;}
-#status div {width: 45%; height: 400px; float: left;}
-
+#status div {-max-width: 45%; height:auto; float: left;}
+#status video {margin-right: 2%;}
+#status canvas {
+  border: solid white;
+  border-width: 10px 10px 40px;
+  -webkit-transform: rotate(3deg);
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.25);
+}
 @media print {
   .slide {
     page-break-inside: avoid;

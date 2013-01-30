@@ -34,7 +34,7 @@ var webcam = (function(){
 
         video.src = source;
 
-        changeStatus('Connected.', false);
+        changeStatus('', false);
 
     }
 
