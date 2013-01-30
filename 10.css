@@ -372,8 +372,8 @@ a.button {float: right; margin-right: 5px;}
 
 #status div[style*="green"] {display: none;}
 #status div {-max-width: 45%; height:auto; float: left;}
-#status video {margin-right: 2%;}
-#status canvas {
+#camera video {margin-right: 2%;}
+#camera canvas {
   border: solid white;
   border-width: 10px 10px 40px;
   -webkit-transform: rotate(3deg);
