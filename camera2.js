@@ -53,13 +53,15 @@ var webcam = (function(){
 
     // allow the user to take a screenshot
     function setupPhotoBooth() {
-        var takeButton = document.createElement('button');
+        var takeButton = document.createElement('a');
         takeButton.innerText = 'Smile!';
+        takeButton.classList.add('button');
         takeButton.addEventListener('click', takePhoto, true);
         document.getElementById('camera').appendChild(takeButton);
 
-        var saveButton = document.createElement('button');
+        var saveButton = document.createElement('a');
         saveButton.id = 'save';
+        saveButton.classList.add('button');
         saveButton.innerText = 'Save!';
         saveButton.disabled = true;
         saveButton.addEventListener('click', savePhoto, true);
@@ -96,8 +98,8 @@ var webcam = (function(){
 
             changeStatus('Look up and click "ALLOW".', true);
 
-            video.width = 320;
-            video.height = 240;
+            video.width = 400;
+            video.height = 300;
 
             document.getElementById('camera').appendChild(video);
             document.getElementById('camera').appendChild(photo);
