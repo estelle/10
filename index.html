@@ -488,6 +488,66 @@ width: <b>max</b>(90px + 50px, 30%)</pre>
     </section>
 </div>
 
+<div class="slide">
+  <header><h1>getUserMedia</h1></header>
+    <section class="content"><pre contenteditable>if (navigator.getUserMedia) {
+  navigator.getUserMedia({
+    video: true,
+    audio: true,
+    toString : function() {
+      return "video,audio";
+    }
+  }, onSuccess, onError);
+} </pre>
+    </section>
+</div>
+
+<div class="slide">
+  <header><h1>getUserMedia</h1></header>
+    <section class="content">
+<pre contenteditable>
+navigator.getUserMedia = navigator.getUserMedia ||
+                         navigator.mozGetUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.msGetUserMedia);</pre>
+    </section>
+</div>
+
+<div class="slide">
+  <header><h1>Success CallBack</h1></header>
+    <section class="content">
+<pre contenteditable>
+play = function(stream) {
+  var source;
+  if (window.webkitURL) {
+    source = window.webkitURL.createObjectURL(stream);
+  } else {
+    source = stream; // Opera and Firefox
+  }
+  video.autoplay = true;
+  video.src = source;
+}
+</pre>
+    </section>
+</div>
+
+<div class="slide">
+  <header><h1>Click &amp; Save</h1></header>
+    <section class="content">
+<pre contenteditable>
+function takePhoto() {
+  var context = photo.getContext('2d');
+  context.drawImage(video, 0, 0, width, height);
+}</pre>
+
+<pre contenteditable>function savePhoto() {
+  var data = photo.toDataURL("image/png");
+  data = data.replace("image/png","image/octet-stream");
+  document.location.href = data;
+}</pre>
+    </section>
+</div>
+
 <div class="slide intro count">
      <header><hgroup><h1 class="count">Animate Sprites</h1></hgroup></header>
     <section class="content">
