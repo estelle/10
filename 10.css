@@ -380,6 +380,90 @@ a.button {float: right; margin-right: 5px;}
   -webkit-transform: rotate(3deg) translate(-45px, 30px);
   box-shadow: 3px 3px 3px rgba(0,0,0,0.25);
 }
+
+
+/* PENCIL ANIMATION */
+.pencil {
+  color:red;
+  height: 140px;
+  width: 140px;
+  margin:10px auto;
+  font-size: 140px;
+  display: block;
+  text-align: left;
+  margin: 10px 0;
+  line-height: 140px;
+  position: absolute;
+  top: 0; left: 0;
+  -webkit-transition: all 1s ease-in 50ms;
+  -webkit-transform-origin: 100px 123px;
+  transition: all 1s ease-in 50ms;
+  transform-origin: 100px 123px;
+}
+.pencil_04 {
+  -webkit-animation: W 3s infinite linear;
+  -webkit-animation-play-state:paused;
+  animation: W 3s infinite linear;
+  animation-play-state:paused;
+}
+
+.slide:hover .pencil_04 {
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+}
+@-webkit-keyframes W {
+
+   0% {
+      left: 0;
+    top: 0;
+          }
+
+    25% {
+      top: 400px;
+    }
+
+    50% {
+      top: 50px;
+    }
+
+    75% {
+      top: 400px;
+    }
+
+    100% {
+      left: 80%;
+      top: 0;
+    }
+
+}
+@keyframes W {
+
+   0% {
+      left: 0;
+    top: 0;
+          }
+
+    25% {
+      top: 400px;
+    }
+
+    50% {
+      top: 50px;
+    }
+
+    75% {
+      top: 400px;
+    }
+
+    100% {
+      left: 80%;
+      top: 0;
+    }
+
+}
+
+
+
 @media print {
   .slide {
     page-break-inside: avoid;

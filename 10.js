@@ -420,42 +420,6 @@ if(e.target.contentEditable && e.target.nodeName !== "BODY") return;
   var slideshow = new SlideShow(query('.slide'));
 })();
 
-var slideExamples = {
-  doElementByCN1: function(){
-    slideExamples.container = document.getElementById('slides');
-    slideExamples.slides = slideExamples.container.getElementsByClassName('slide');
-    alert('1. slides.length: ' + slideExamples.slides.length);
-  },
-  doElementByCN2: function(){
-    var foo = document.createElement('div');
-    foo.classList.add('slide');
-    slideExamples.container.appendChild(foo);
-    alert('2. slides.length: ' + slideExamples.slides.length);
-  },
-  emptyList: function(){
-    var emptyList = document.getElementsByClassName('not_found');
-    if(emptyList) {alert('returned empty node list')};
-  },
-  setUpQSA: function(){
-    slideExamples.EBCN = document.getElementsByClassName('slide');
-    slideExamples.QSA = document.querySelectorAll('#slides .slide');
-    alert('Original byClassName: ' + slideExamples.EBCN.length + '\n\nOriginal SelectorAll: ' + slideExamples.QSA.length);
-  },
-  testQSA: function(){
-    var newSlide = document.createElement('div');
-    newSlide.classList.add('slide');
-    document.getElementById('slides').appendChild(newSlide);
-
-alert('Current byClassName: ' + slideExamples.EBCN.length + '\n\nCurrent SelectorAll: ' + slideExamples.QSA.length);
-  },
-  bodyAttribute: function(){
-    document.body.dataset.aBC = 'frog';
-      alert("getAttribute('data-a-b-c'): " + document.body.getAttribute('data-a-b-c') +
-      "\n\ndataset['aBC']: " + document.body.dataset['aBC'] +
-      "\n\ndataset.aBC: " + document.body.dataset.aBC);
-  }
- }
-
 
 
 

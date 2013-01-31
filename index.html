@@ -108,11 +108,11 @@ for(var i=0; i &lt; slides.length; i++){
 
 				<pre contenteditable>
 var slides = document.querySelectorAll('div.slide'),
-    topics = document.querySelectorAll('h1.count'),
-    summary = document.querySelector("#summary");
+  topics = document.querySelectorAll('h1.count'),
+  summary = document.querySelector("#summary");
 
-summary.innerHTML = "There are " + slides.length +
-    " slides covering " + topics.length +  " topics.";</pre>
+  summary.innerHTML = "There are " + slides.length +
+  " slides covering " + topics.length +  " topics.";</pre>
 				<a class=button id="qsa">Click me</a>
 <p id="summary" style="background-color: #fff; margin-top: 3rem;"></p>
 				<script defer>
@@ -168,7 +168,7 @@ el = $(#bar '.foo');</pre>
 
 
 <div class="slide normal">
-     <header><h1>Returns a Live Node List</h1></header>
+     <header><h1>Live Node List</h1></header>
      <section class="content" style="margin-top: -20px;">
 <p class="half">Try the following code in the console</p><a class="button" onClick="slideExamples.doElementByCN1();">Originally</a>
 <pre style="font-size:0.8rem" contenteditable>
@@ -183,6 +183,46 @@ console.log('2.' + slides.length);</pre><a class="button" onClick="slideExamples
 <ul><li>Live NodeList</li><li>Case-sensitive</li><li>Empty NodeList returns true</li></ul>
 <pre style="font-size:1rem" contenteditable>var emptyList = document.getElementsByClassName('not_found');
 if(emptyList) {alert('returned empty node list')};</pre><a class="button" onClick="slideExamples.emptyList()">Test Me</a>     </section>
+
+<script defer>
+
+var slideExamples = {
+  doElementByCN1: function(){
+    slideExamples.container = document.getElementById('slides');
+    slideExamples.slides = slideExamples.container.getElementsByClassName('slide');
+    alert('1. slides.length: ' + slideExamples.slides.length);
+  },
+  doElementByCN2: function(){
+    var foo = document.createElement('div');
+    foo.classList.add('slide');
+    slideExamples.container.appendChild(foo);
+    alert('2. slides.length: ' + slideExamples.slides.length);
+  },
+  emptyList: function(){
+    var emptyList = document.getElementsByClassName('not_found');
+    if(emptyList) {alert('returned empty node list')};
+  },
+  setUpQSA: function(){
+    slideExamples.EBCN = document.getElementsByClassName('slide');
+    slideExamples.QSA = document.querySelectorAll('#slides .slide');
+    alert('Original byClassName: ' + slideExamples.EBCN.length + '\n\nOriginal SelectorAll: ' + slideExamples.QSA.length);
+  },
+  testQSA: function(){
+    var newSlide = document.createElement('div');
+    newSlide.classList.add('slide');
+    document.getElementById('slides').appendChild(newSlide);
+
+alert('Current byClassName: ' + slideExamples.EBCN.length + '\n\nCurrent SelectorAll: ' + slideExamples.QSA.length);
+  },
+  bodyAttribute: function(){
+    document.body.dataset.aBC = 'frog';
+      alert("getAttribute('data-a-b-c'): " + document.body.getAttribute('data-a-b-c') +
+      "\n\ndataset['aBC']: " + document.body.dataset['aBC'] +
+      "\n\ndataset.aBC: " + document.body.dataset.aBC);
+  }
+ }
+
+</script>
  </div>
 
 <!--<div class="slide normal"><section class="content">
@@ -195,7 +235,7 @@ if(emptyList) {alert('returned empty node list')};</pre><a class="button" onClic
 
 
 <div class="slide normal">
-<header><h1>static nodeList</h1></header>
+<header><h1>static vs. live node list</h1></header>
 <section class="content">
 <pre contenteditable>QSA = d.querySelectorAll('#slides .slide')</pre>
 <p>if you increase # of slides, EBCN increases, QSA does not.</p>
@@ -286,6 +326,51 @@ var el = document.querySelector('#myID');
 el.innerHTML = window.localStorage.getItem('key');</pre>
 
 </section>
+<script defer>
+  (function(){
+  // if local storage not supported, quit
+  try {
+    (window.localStorage.getItem)
+  } catch(e){
+    return;
+  }
+
+  var textarea = document.querySelector('#ls');
+
+
+  // place content from local storage on load if there is one
+  if (!textarea.value) {
+    textarea.value = window.localStorage.getItem('value');
+  }
+
+  updateLog(false);
+
+
+  // your content will be saved locally
+  document.querySelector('#savelocalstorage').addEventListener('click', function () {
+    window.localStorage.setItem('value', textarea.value);
+    window.localStorage.setItem('timestamp', (new Date()).getTime());
+    updateLog(true);
+  }, false);
+
+  function updateLog(new_save) {
+    var log = document.querySelector("#lsLog");
+    var delta = 0;
+    if (window.localStorage.getItem('value')) {
+    delta = ((new Date()).getTime() - (new Date()).setTime(window.localStorage.getItem('timestamp'))) / 1000;
+    if (new_save) {
+      log.textContent = 'Saved. Content will be available after browser refresh/reopen.';
+      setTimeout(function() {
+      log.textContent = '';
+      }, 3000);
+    } else {
+      log.textContent = 'last saved: ' + delta + 's ago';
+    }
+    }
+  }
+
+  })();
+</script>
         </div>
 
 
@@ -333,6 +418,7 @@ ta.className = 'mynotes';
  currentSlide.appendChild(ta);
 },
 </pre>
+<p class='half'>Click in the code above before scrolling</p>
     </section>
 </div>
 
@@ -433,16 +519,18 @@ background: linear-gradient(
     </section>
 </div>
 
-<div class="slide object">
-  <header><h1>calc()</h1></header>
-    <object data="files/01_calc.html"></object>
-<a href="files/01_calc.html" target="play" class="objectlink">Try it out</a>
-</div>
 
 <div class="slide object">
   <header><h1>calc()</h1></header>
     <object data="files/02_calc.html"></object>
 <a href="files/02_calc.html" target="play" class="objectlink">Try it out</a>
+</div>
+
+
+<div class="slide object">
+  <header><h1>calc()</h1></header>
+    <object data="files/01_calc.html"></object>
+<a href="files/01_calc.html" target="play" class="objectlink">Try it out</a>
 </div>
 
 <div class="slide">
@@ -564,10 +652,107 @@ function takePhoto() {
     </section>
 </div>
 
+<div class="slide">
+     <header>
+      <h1>simple animation</h1>
+     </header>
+     <section class="content">
+     <b class="pencil pencil_04">✎</b>
+     <pre contenteditable>@keyframes <b>W</b> {
+    0% {
+      <b>left:</b> 0;
+      <b>top:</b> 0;
+    }
+    25% {
+      <b>top:</b> 400px;
+    }
+    50% {
+      <b>top:</b> 50px;
+    }
+    75% {
+      <b>top:</b> 400px;
+    }
+    100% {
+      <b>left:</b> 80%;
+      <b>top:</b> 0;
+    }
+}</pre>
+     </section>
+</div>
+
+
+ <!-- timing function -->
+ <div class="slide" id="animtf">
+     <b id="animateMe" class="pencil">✎</b>
+    <header>
+      <h1>animation-timing-function</h1>
+    </header>
+    <section class="content">
+    <pre contenteditable>#selector { <select
+      onChange="changeTimingFunction(event)">
+      <option value="linear">linear</option>
+      <option value="ease">ease</option>
+      <option value="ease-in">ease-in</option>
+      <option value="ease-out">ease-out</option>
+      <option value="ease-in-out" selected>ease-in-out</option>
+      <option value="step-start">step-start</option>
+      <option value="step-end">step-end</option>
+      <option value="steps(5, start)">steps(5, start)</option>
+      <option value="steps(5, end)">steps(5, end)</option>
+    </select>
+  <u></u>animation-name: nameYouMadeUp;
+  <u></u>animation-duration: 5s;
+  <b><u></u>animation-timing-function: <span class="changer">ease-in-out</span>;</b>
+}</pre>
+<p>possible values:</p>
+<pre contenteditable><strong>ease</strong>           linear
+ease-in        ease-out
+ease-in-out    cubic-bezier(x1, y1, x2, y2)
+step-start <span class="notes">/* same as steps(1, start) */</span>
+step-end <span class="notes">/* same as steps(1, end) */</span>
+steps( X, start|<strong>end</strong>) <span class="notes">/* X = # of steps + when change of value occurs */</span>
+</pre>
+</section>
+
+<script defer>
+ function changeTimingFunction(event){
+   var speed = event.target.value;
+   console.log(speed)
+   var seconds = document.querySelectorAll("span.changer");
+   for(var i = 0, j = seconds.length; i < j; i++){
+     seconds[i].innerHTML = speed;
+   }
+   var el = document.getElementById('animateMe');
+   el.style.webkitAnimation =
+    el.style.mozAnimation =
+    el.style.oAnimation =
+    el.style.msAnimation =
+    el.style.animation = 'W 5s ' + speed;
+    console.log(el.style.animation);
+   // el.style.webkitAnimation = 'W 5s ';
+  // document.getElementById('animationtimingfunc').style.webkitAnimationName = 'drawALine';
+  // document.getElementById('animationtimingfunc').style.webkitAnimationTimingFunction = speed;
+ }
+</script>
+    </div>
+
+<div class="slide object">
+  <header><h1>Bezier Curves</h1></header>
+    <object data="http://bezier-curve.com"></object>
+<a href="http://bezier-curve.com" target="play" class="objectlink">bezier-curve.com</a>
+</div>
+
+<!-- making a W -->
+
+<div class="slide">
+  <header><h1>steps</h1></header>
+    <section class="content">
+    </section>
+</div>
 
 
 <div class="slide intro count">
-     <header><hgroup><h1 class="count">Manage memory</h1></hgroup></header>
+     <header><hgroup><h1 class="count">Help you manage memory</h1></hgroup></header>
     <section class="content">
      <p class="temphidden">In the debugger</p>
     </section>
