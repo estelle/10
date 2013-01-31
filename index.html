@@ -506,10 +506,11 @@ width: <b>max</b>(90px + 50px, 30%)</pre>
   <header><h1>getUserMedia</h1></header>
     <section class="content">
 <pre contenteditable>
-navigator.getUserMedia = navigator.getUserMedia ||
-                         navigator.mozGetUserMedia ||
-                         navigator.webkitGetUserMedia ||
-                         navigator.msGetUserMedia);</pre>
+navigator.getUserMedia =
+    navigator.getUserMedia ||
+    navigator.mozGetUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.msGetUserMedia);</pre>
     </section>
 </div>
 
@@ -520,7 +521,7 @@ navigator.getUserMedia = navigator.getUserMedia ||
 play = function(stream) {
   var source;
   if (window.webkitURL) {
-    source = window.webkitURL.createObjectURL(stream);
+    source = webkitURL.createObjectURL(stream);
   } else {
     source = stream; // Opera and Firefox
   }
@@ -542,7 +543,8 @@ function takePhoto() {
 
 <pre contenteditable>function savePhoto() {
   var data = photo.toDataURL("image/png");
-  data = data.replace("image/png","image/octet-stream");
+  data =
+    data.replace("image/png","image/octet-stream");
   document.location.href = data;
 }</pre>
     </section>
