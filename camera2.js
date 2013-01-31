@@ -103,7 +103,7 @@ var webcam = (function(){
 
             document.getElementById('camera').appendChild(video);
             document.getElementById('camera').appendChild(photo);
-
+            startCam.style.display = 'none';
             navigator.getUserMedia || (navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia || navigator.msGetUserMedia);
 
             play();
@@ -114,4 +114,7 @@ var webcam = (function(){
     }
 
 
-})();
+});
+
+var startCam = document.getElementById('startCam');
+startCam.addEventListener('click', function(){webcam(); return false;});
