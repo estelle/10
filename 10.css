@@ -366,7 +366,9 @@ a.button {float: right; margin-right: 5px;}
 }
 
 .svgbg.current {
-  background: url(10.svg);
+  background-image: url(star.svg), url(10.svg);
+  background-size: 100px, auto;
+  background-position: center, top;
 }
 .slide .half {opacity: 0.4; font-size: 80%;}
 
