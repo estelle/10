@@ -40,7 +40,7 @@ Copyright:  CC-SA-NC-BY - Creative Commons Attribution-NonCommercial-ShareAlike
 
 
 <div class="slide intro count">
-     <header><hgroup><h1 class="">$('selector') without jQuery</h1></hgroup></header>
+     <header><hgroup><h1 class="count">$('selector') without jQuery</h1></hgroup></header>
     <section class="content">
      <p class="temphidden">Selectors API</p>
      <p class="pop temphidden">Supported since IE8</p>
@@ -142,6 +142,7 @@ console.log('Current QSA: ' + QSA.length);</pre>
 	<a  class="button" onClick="slideExamples.testQSA()">Test Me</a>
 </section>
 </div>
+<!--
 <div class="slide intro">
      <header><h1 style="font-size: 2.75rem;">getElementsByClassName</h1></header>
      <section><p class="pop temphidden">Supported since IE9</p></section>
@@ -183,7 +184,7 @@ console.log('2.' + slides.length);</pre><a class="button" onClick="slideExamples
 <ul><li>Live NodeList</li><li>Case-sensitive</li><li>Empty NodeList returns true</li></ul>
 <pre style="font-size:1rem" contenteditable>var emptyList = document.getElementsByClassName('not_found');
 if(emptyList) {alert('returned empty node list')};</pre><a class="button" onClick="slideExamples.emptyList()">Test Me</a>     </section>
-
+-->
 <script defer>
 
 var slideExamples = {
@@ -204,7 +205,7 @@ var slideExamples = {
   },
   setUpQSA: function(){
     slideExamples.EBCN = document.getElementsByClassName('slide');
-    slideExamples.QSA = document.querySelectorAll('#slides .slide');
+    slideExamples.QSA = document.querySelectorAll('.slide');
     alert('Original byClassName: ' + slideExamples.EBCN.length + '\n\nOriginal SelectorAll: ' + slideExamples.QSA.length);
   },
   testQSA: function(){
@@ -212,7 +213,7 @@ var slideExamples = {
     newSlide.classList.add('slide');
     document.getElementById('slides').appendChild(newSlide);
 
-alert('Current byClassName: ' + slideExamples.EBCN.length + '\n\nCurrent SelectorAll: ' + slideExamples.QSA.length);
+    alert('Current byClassName: ' + slideExamples.EBCN.length + '\n\nCurrent SelectorAll: ' + slideExamples.QSA.length);
   },
   bodyAttribute: function(){
     document.body.dataset.aBC = 'frog';
@@ -233,7 +234,7 @@ alert('Current byClassName: ' + slideExamples.EBCN.length + '\n\nCurrent Selecto
  </div>-->
 
 
-
+<!--
 <div class="slide normal">
 <header><h1>static vs. live node list</h1></header>
 <section class="content">
@@ -252,7 +253,7 @@ console.log('Current QSA: ' + QSA.length);
 </pre><a onClick="slideExamples.testQSA()" class="button">Slide Added</a>
 </section>
 </div>
-
+-->
 <div class="slide intro count">
      <header><hgroup><h1 class="count" contenteditable> Everything can be editable</h1></hgroup></header>
 </div>
